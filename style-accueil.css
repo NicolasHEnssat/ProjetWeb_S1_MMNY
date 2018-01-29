@@ -3,18 +3,20 @@
   align-items:center;
   overflow: hidden;
   background-color: orange;
-  height:3em;
+  height:2.5em;
   width:auto;
+  padding-top: 2px;
+  margin-bottom: 5px;
 }
 
 .searchItems{
-  margin: 10px;
+  margin: 20px;
 }
 .content{
-  height : 40em;
+  height : 30em;
   display:flex;
   align-items:stretch;
-  margin-top:5px;
+  margin-top:10px;
 }
 
 .global_content{
@@ -22,14 +24,14 @@
   width : 45%;
 }
 #Event{
-  height : 55%;
+  height : 14em;
   width : 30%;
   position: absolute;
   left : 47%;
   border : 2px solid black;
 }
 #groupes{
-  height : 55%;
+  height : 14em;
   width : 30%;
   position: absolute;
   margin-bottom: 0px;
@@ -43,6 +45,9 @@
   margin-left:auto;
 }
 
-#parameterico{
-  width : 50px;
+.parameterico{
+  width : 40px;
+  height : 40px;
+  margin-right: 5px;
+  margin-left: 5px;
 }

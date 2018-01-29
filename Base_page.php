@@ -14,10 +14,13 @@
 
 
 		<!-- Barre de recherche -->
+
+
+
 		<div class="searchbar">
-		  <a class="searchItems" href="#home">Home</a>
-			<img src="img_reseau-soc/parameter-icon.png" href="#home" id="parameterico">
-		  <a class="searchItems" href="#amis">Amis</a>
+			<a href="Base_page.php"><img src="img_reseau-soc/simple-home.png" class="parameterico"></a>
+			<a href="#parametres"><img src="img_reseau-soc/parameter-icon.png" class="parameterico"></a>
+			<a href="#chat"><img src="img_reseau-soc/chat-bubble.png" class="parameterico"></a>
 		  <input type="text" placeholder="Search...">
 			<input type="submit" value="Rechercher">
 		</div>
