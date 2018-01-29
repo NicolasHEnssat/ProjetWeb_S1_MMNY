@@ -1,4 +1,19 @@
 <!DOCTYPE html>
+
+<?php
+
+if(!empty($_POST["email"]) && !empty($_POST["pass"])){
+	if($_POST["email"]== "yrhoulam@enssat.fr" && $_POST["pass"] == "Younes"){
+		header("location: profil.php");
+	}
+	else{
+		header("location: index.php");
+	}
+}
+
+
+
+?>
 <html>
 	<head>
 		<meta charset="utf-8" lang="fr" />
