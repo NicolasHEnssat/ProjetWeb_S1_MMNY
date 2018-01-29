@@ -1,0 +1,48 @@
+.searchbar{
+  display: flex;
+  align-items:center;
+  overflow: hidden;
+  background-color: orange;
+  height:3em;
+  width:auto;
+}
+
+.searchItems{
+  margin: 10px;
+}
+.content{
+  height : 40em;
+  display:flex;
+  align-items:stretch;
+  margin-top:5px;
+}
+
+.global_content{
+  border : 2px solid black;
+  width : 45%;
+}
+#Event{
+  height : 55%;
+  width : 30%;
+  position: absolute;
+  left : 47%;
+  border : 2px solid black;
+}
+#groupes{
+  height : 55%;
+  width : 30%;
+  position: absolute;
+  margin-bottom: 0px;
+  align-self: flex-end;
+  left : 47%;
+  border : 2px solid black;
+}
+#chat{
+  border : 2px solid black;
+  width : 20%;
+  margin-left:auto;
+}
+
+#parameterico{
+  width : 50px;
+}
