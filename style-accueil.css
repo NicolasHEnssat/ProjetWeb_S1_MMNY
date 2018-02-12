@@ -3,7 +3,7 @@
   align-items:center;
   overflow: hidden;
   background-color: orange;
-  height:2.5em;
+  height:10%;
   width:auto;
   padding-top: 2px;
   margin-bottom: 5px;
@@ -13,25 +13,35 @@
   margin: 20px;
 }
 .content{
-  height : 30em;
+  height : 87vh;
   display:flex;
   align-items:stretch;
+  /*align-content: stretch;
+  align-self: stretch;*/
   margin-top:10px;
 }
 
 .global_content{
   border : 2px solid black;
   width : 45%;
+  align-items: stretch;
+  align-self: stretch;
+}
+.grpevent{
+  display : block;
+
 }
 #Event{
-  height : 14em;
+  height : 42vh;
   width : 30%;
+  /*display : block;*/
   position: absolute;
   left : 47%;
   border : 2px solid black;
 }
 #groupes{
-  height : 14em;
+  /*display : block;*/
+  height : 42vh;
   width : 30%;
   position: absolute;
   margin-bottom: 0px;
