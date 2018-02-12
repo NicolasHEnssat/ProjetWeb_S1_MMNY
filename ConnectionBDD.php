@@ -8,30 +8,37 @@ $filter= ['_id' => $id];
 $query = new MongoDB\Driver\Query($filter);
 
 $cursor = $connection->executeQuery('ProjetWeb.etudiants', $query);
-var_dump($cursor);
+//var_dump($cursor);
 
 
 
 
 $bulk = new MongoDB\Driver\BulkWrite;
 
-// $document1 = ['title' => 'one'];
-// $document2 = ['_id' => 'custom ID', 'title' => 'two'];
-
+//CREATION D UN ETUDIANT
 $nouvetud = array(
-            "u_login" => "Shwartzy",
-            "u_mdp" => "playstation",
-            "u_nom" => "Shwartzy",
-            "u_prenom" => "shosho",
-            "u_naissance" => "1956",
-            "u_genre" => "Apache helicopter",
-            "u_email" => "terminathor@yahoo.com",
+            "u_login" => "Ahri",
+            "u_mdp" => "dabisou",
+            "u_nom" => "Elmack",
+            "u_prenom" => "Ahri-rose",
+            "u_naissance" => "2000",
+            "u_genre" => "Femme",
+            "u_email" => "kisskiss@laposte.net",
             "u_annee" => "2017",
-            "u_discipline" => "IMR");
+            "u_discipline" => "Elec",
+            "u_colorfond" => "pink",
+            "u_colortext" => "blue");
 
 $_id1 = $bulk->insert($nouvetud);
-
-
 //var_dump($nouvetud);
+
+//SUPRESSION D UN ETUDIANT
+$bulk->delete(['u_login' => "Shwartzoula"], ['limit' => 1]);
+
+//MODIFICATION D UN CARACTERE
+ $bulk->update(['u_naissance' => "2000"], ['$set' => ['u_naissance' => '1982']]);
+
+
+//Application des modification
 $result = $connection->executeBulkWrite('ProjetWeb.etudiants', $bulk);
 ?>
