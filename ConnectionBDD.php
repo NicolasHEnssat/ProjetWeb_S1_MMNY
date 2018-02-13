@@ -1,19 +1,7 @@
 <?php
-$connection = new MongoDB\Driver\Manager("mongodb://localhost:27017");
-
-
-$id   = new \MongoDB\BSON\ObjectId("5a7b250f1679ade450aca284");
-$filter= ['_id' => $id];
-
-$query = new MongoDB\Driver\Query($filter);
-
-$cursor = $connection->executeQuery('ProjetWeb.etudiants', $query);
-//var_dump($cursor);
-
-
-
-
-$bulk = new MongoDB\Driver\BulkWrite;
+$connection = new MongoDB\Driver\Manager("mongodb://localhost:27017"); // Connexion à la db
+$bulk = new MongoDB\Driver\BulkWrite; // Ecriture, suppression
+$query = new \MongoDB\Driver\Query($filter, $options); // Lecture
 
 //CREATION D UN ETUDIANT
 $nouvetud = array(
@@ -29,16 +17,30 @@ $nouvetud = array(
             "u_colorfond" => "pink",
             "u_colortext" => "blue");
 
-$_id1 = $bulk->insert($nouvetud);
+$_id1 = $bulk->insert($nouvetud); // Insertion de l'arrray
+
+
 //var_dump($nouvetud);
 
 //SUPRESSION D UN ETUDIANT
-$bulk->delete(['u_login' => "Shwartzoula"], ['limit' => 1]);
+$bulk->delete(['u_login' => "Shwartzoula"], ['limit' => 1]); //Commande de supression
 
 //MODIFICATION D UN CARACTERE
- $bulk->update(['u_naissance' => "2000"], ['$set' => ['u_naissance' => '1982']]);
+$bulk->update(['u_naissance' => "2000"], ['$set' => ['u_naissance' => '1982']]); //update
+
+// LIRE bdd
+$filter = ['u_login' => "Ahri"];  // Application des filtres et options ( ici null)
+$options = [];
+$rows = $connection->executeQuery('ProjetWeb.etudiants', $query);
+
+foreach ($rows as $document) {
+  var_dump($document);
+}
+
+
 
 
 //Application des modification
 $result = $connection->executeBulkWrite('ProjetWeb.etudiants', $bulk);
+
 ?>
