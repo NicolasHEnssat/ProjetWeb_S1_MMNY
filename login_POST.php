@@ -60,10 +60,13 @@
 <?php
 if(isset($_POST['connexion']) && $_POST['connexion'] == 'Connexion'){
 	if(!empty($_POST) && isset($_POST["login"]) && isset($_POST["pass"]) && ($_POST["login"]!="") && ($_POST["pass"]!="")){
-		//$connection = new MongoDB\Driver\Manager("mongodb://192.168.43.89:27017");
+		$connection = new MongoDB\Driver\Manager("mongodb://localhost:27017");
 		$filter = ['u_login' => $_POST['login']];
+		$query = new \MongoDB\Driver\Query($filter);
+		$rows = $connection->executeQuery('Projet_PHP.PHP', $query);
+		$value = $rows->toArray()[0];
 		//Tester en "dur" si le compte utilisateur peut se connecter
-		if ($_POST["login"]=="Ahri" && $_POST["pass"]=="dabisou"){
+		if ($_POST["login"]==$value->u_login && $_POST["pass"]==$value->u_mdp){
 			//identification OK
 			session_start();
 			$_SESSION['login'] = $_POST['login'];
@@ -71,9 +74,36 @@ if(isset($_POST['connexion']) && $_POST['connexion'] == 'Connexion'){
 		}
 		else{
 			header("location:login_POST.php");
-			/*?>
-			<p><a href="javascript:history.back()">Retour vers le futur</a></p>
-			<?php*/
+		}
+	}
+}
+if(isset($_POST['inscription']) && $_POST['inscription'] == 'Inscription'){
+	if(!empty($_POST) && isset($_POST["login"]) && isset($_POST["pass"]) && ($_POST["login"]!="") && ($_POST["pass"]!="")){
+		$connection = new MongoDB\Driver\Manager("mongodb://localhost:27017"); // Connexion à la db
+		$filter = ['u_login' => $_POST['login']];
+		$query = new \MongoDB\Driver\Query($filter);
+		$rows = $connection->executeQuery('Projet_PHP.PHP', $query);
+		$value = $rows->toArray()[0];
+		if ($_POST["login"]!=$value->u_login){
+			$bulk = new MongoDB\Driver\BulkWrite; // Ecriture, suppression
+			$nouvetud = array(
+							"u_login" => $_POST['login'],
+							"u_mdp" => $_POST['pass'],
+							"u_nom" => $_POST['nom'],
+							"u_prenom" => $_POST['prenom'],
+							"u_naissance" => $_POST['naissance'],
+							"u_genre" => $_POST['genre'],
+							"u_email" => $_POST['mail'],
+							"u_annee" => $_POST['annee'],
+							"u_discipline" => $_POST['discipline'],
+							"u_colorfond" => "orange",
+							"u_colortext" => "black");
+			$_id1 = $bulk->insert($nouvetud);
+			$result = $connection->executeBulkWrite('Projet_PHP.PHP', $bulk);
+			$login = $_POST['login'];
+			echo "<script>alert('Inscription de $login validée');</script>";
+		}else{
+			echo "<script>alert('Login déjà existant');</script>";
 		}
 	}
 }
