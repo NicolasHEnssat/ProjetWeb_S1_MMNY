@@ -28,11 +28,16 @@ if(isset($_POST['option']) && $_POST['option'] == 'suppression'){
 // ajouter le corps de page et g�n�rer la page.
 
   $body = <<< BODY
-    <section class="content">
+    <section class="contentParameter">
       <div>
-				<p> Préférences </p>
+	<fieldset>
+		<legend> Préférences </legend>
+		<p> Couleur de fond </p>
+		<p> Couleur de texte </p>
+		<p> Paramètres avancés </p>
+	</fieldset>
       </div>
-			<div>
+	<div>
         <form action="#" method="post">
           <fieldset>
               <input type="hidden" name="option" value="deconnexion">
