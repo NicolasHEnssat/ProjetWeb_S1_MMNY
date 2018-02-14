@@ -16,8 +16,6 @@
   height : 87vh;
   display:flex;
   align-items:stretch;
-  /*align-content: stretch;
-  align-self: stretch;*/
   margin-top:10px;
 }
 
@@ -34,13 +32,11 @@
 #Event{
   height : 42vh;
   width : 30%;
-  /*display : block;*/
   position: absolute;
   left : 47%;
   border : 2px solid black;
 }
 #groupes{
-  /*display : block;*/
   height : 42vh;
   width : 30%;
   position: absolute;
@@ -59,4 +55,7 @@
   position : left;
   width : 40px;
   height : 40px;
+}
+.contentParameter{
+  width : 20vw;
 }
